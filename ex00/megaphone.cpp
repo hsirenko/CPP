@@ -1,27 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/16 13:57:21 by helensirenk       #+#    #+#             */
+/*   Updated: 2024/12/12 15:26:07 by helensirenk      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include <string>
-#include <cctype>
 
-int main()
+int main(int argc, char **argv)
 {
-	char c;
-
-	std:: string Input;
-	std::cin >> Input;
-	if (Input.empty())
+	if (argc == 1)
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
+	else 
 	{
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-		return 0;
+		for (int i = 1; i < argc; i++)
+		{
+			for (int j = 0; argv[i][j]; j++)
+				std::cout << (char)toupper(argv[i][j]);
+			if (i != argc - 1)
+				std::cout << " ";
+		}
 	}
-	else
-	{
-		while (c : Input)
-	{
-		c = std:: toupper(c);
-
-	}
-	std::cout << c;
-
-	}
-	return 0;
+	std::cout << std::endl;
+	return (0);
 }

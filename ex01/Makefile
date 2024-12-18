@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/12/12 18:48:58 by helensirenk       #+#    #+#              #
-#    Updated: 2024/12/15 22:22:34 by helensirenk      ###   ########.fr        #
+#    Created: 2024/12/12 18:48:50 by helensirenk       #+#    #+#              #
+#    Updated: 2024/12/15 22:29:39 by helensirenk      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@
 CXX = g++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -v
 LDFLAGS =
-TARGET = megaphone
-SRC = megaphone.cpp
+TARGET = phonebook
+SRC = ClassContact.cpp ClassPhonebook.cpp main.cpp
 
 # Default target
 all: $(TARGET)
