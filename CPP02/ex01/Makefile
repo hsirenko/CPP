@@ -6,14 +6,14 @@
 #    By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/19 17:25:06 by hsirenko          #+#    #+#              #
-#    Updated: 2025/01/04 10:18:06 by helensirenk      ###   ########.fr        #
+#    Updated: 2025/01/04 10:19:00 by helensirenk      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Variables
 CXX = g++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -v -fno-elide-constructors
-TARGET = orthodox
+TARGET = more_useful
 SRC = main.cpp Fixed.cpp
 
 # Default target
