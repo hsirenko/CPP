@@ -5,16 +5,17 @@
 #                                                     +:+ +:+         +:+      #
 #    By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/01/06 10:51:15 by helensirenk       #+#    #+#              #
-#    Updated: 2025/01/08 16:08:44 by helensirenk      ###   ########.fr        #
+#    Created: 2025/01/08 23:58:27 by helensirenk       #+#    #+#              #
+#    Updated: 2025/01/10 00:16:43 by helensirenk      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+
 # Variables
 CXX = g++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow
-TARGET = DiamondTrap
-SRC = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+TARGET = AnimalSounds
+SRC = main.cpp Animals.cpp Dog.cpp Cat.cpp WrongCat.cpp WrongAnimal.cpp
 
 # Default target
 all: $(TARGET)

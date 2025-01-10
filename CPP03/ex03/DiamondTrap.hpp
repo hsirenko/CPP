@@ -6,7 +6,7 @@
 /*   By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 13:38:49 by helensirenk       #+#    #+#             */
-/*   Updated: 2025/01/08 15:59:39 by helensirenk      ###   ########.fr       */
+/*   Updated: 2025/01/09 15:14:22 by helensirenk      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class DiamondTrap : public ScavTrap, public FragTrap
         DiamondTrap &operator=(const DiamondTrap &src);
         ~DiamondTrap();
 
-        void attack(const std::string &target);
+        //void attack(const std::string &target);
         void whoAmI();
 
     private:
