@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animals.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+        */
+/*   By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 23:59:23 by helensirenk       #+#    #+#             */
-/*   Updated: 2025/01/09 23:56:56 by helensirenk      ###   ########.fr       */
+/*   Updated: 2025/01/10 17:37:32 by hsirenko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 
 #include <iostream>
 #include <string>
+
+#include "Brain.hpp"
+
+class Brain; // forward declaration
+//The error occurs because the compiler encounters the use of the Brain class in Animals.hpp before it has seen the definition of the Brain class. This happens because the #include "Brain.hpp" directive in Animals.hpp is not correctly resolving the definition of Brain.
 
 class Animal
 {
@@ -31,6 +36,8 @@ class Animal
 
 class Dog : public Animal
 {
+	private:
+		Brain *brain;
     public:
         Dog();
         Dog(Dog const &src);
@@ -41,6 +48,8 @@ class Dog : public Animal
 
 class Cat : public Animal
 {
+	private:
+		Brain *brain;
     public:
         Cat();
         Cat(Cat const &src);
