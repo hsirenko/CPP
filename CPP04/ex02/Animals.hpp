@@ -6,7 +6,7 @@
 /*   By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 23:59:23 by helensirenk       #+#    #+#             */
-/*   Updated: 2025/01/11 03:38:16 by helensirenk      ###   ########.fr       */
+/*   Updated: 2025/01/11 03:51:52 by helensirenk      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class Animal
         Animal(Animal const &src);
         Animal &operator=(Animal const &src);
         virtual ~Animal();
-        virtual void makeSound() const;
+        virtual void makeSound() const = 0; //updated. pure virtual function. forcing own implementation in derived classes
         std::string getType() const;
 };
 
@@ -43,7 +43,7 @@ class Dog : public Animal
         Dog(Dog const &src);
         Dog &operator=(Dog const &src);
         ~Dog();
-        void makeSound() const;
+        virtual void makeSound() const; //updated
 };
 
 class Cat : public Animal
@@ -55,7 +55,7 @@ class Cat : public Animal
         Cat(Cat const &src);
         Cat &operator=(Cat const &src);
         ~Cat();
-        void makeSound() const;
+        virtual void makeSound() const; // Override makeSound() //updated
 };
 
 #endif
