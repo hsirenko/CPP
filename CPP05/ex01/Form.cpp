@@ -6,12 +6,14 @@
 /*   By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 16:28:13 by hsirenko          #+#    #+#             */
-/*   Updated: 2025/01/12 19:18:28 by hsirenko         ###   ########.fr       */
+/*   Updated: 2025/01/13 20:51:58 by hsirenko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
+// Constructors 
 Form::Form() : name(""), isSigned(false), gradeToSign(1), gradeToExecute(1)
 {
 	std::cout << "Form " << this->name << " was created" << std::endl;
@@ -30,25 +32,24 @@ Form::Form(std::string const name, int gradeToSign, int gradeToExecute) : name(n
 Form::Form(const Form &src) : name(src.name), isSigned(src.isSigned), gradeToSign(src.gradeToSign), gradeToExecute(src.gradeToExecute)
 {
 	*this = src;
-	std::cout << "Form " << this->name << " was copied" << std::endl;
+	std::cout << "Form " << src.getName() << " was copied into " << this->getName() << std::endl;
 };
 
 Form &Form::operator=(const Form &src)
 {
-	if (gradeToSign < 1 || gradeToExecute < 1)
-		throw Form::GradeTooHighException();
-	if (gradeToSign > 150 || gradeToExecute > 150)
-		throw Form::GradeTooLowException();
 	if (this != &src)
 		this->isSigned = src.isSigned;
 	std::cout << "Form " << this->name << " was copied and attributes assigned" << std::endl;
 	return (*this);
 };
 
+//Destructor
 Form::~Form()
 {
 	std::cout << "From " << this->name << " was destroyed" << std::endl;
 }
+
+//Getters
 std::string Form::getName() const
 {
 	return (this->name);
@@ -69,20 +70,31 @@ int Form::getGradeToExecute() const
 	return (this->gradeToExecute);
 };
 
+
+//Methods
 bool Form::beSigned(Bureaucrat &bureaucrat)
 {
-	if (bureaucrat.getGrade() <= this->gradeToSign)
+	if (bureaucrat.getGrade() > this->gradeToSign)
+		throw Form::GradeTooLowException();
+	else if (this->isSigned == false)
 	{
 		this->isSigned = true;
+		std::cout << YELLOW << bureaucrat.getName() << " signed " << this->name << RESET << std::endl;
+		return (true);
+	}
+	else if (this->isSigned == true)
+	{
+		std::cout << YELLOW << "Form is already signed" << std::endl;
 		return (true);
 	}
 	else
 	{
 		this->isSigned = false;
-		return (false);
+		throw Form::GradeTooHighException();
 	}
 };
 
+//Overload Operator for <<
 std::ostream &operator<<(std::ostream &stream, Form const &form)
 {
 	stream << "Form " << form.getName() 
@@ -92,6 +104,7 @@ std::ostream &operator<<(std::ostream &stream, Form const &form)
 	return (stream);
 }
 
+//Exceptions
 const char *Form::GradeTooHighException::what() const throw()
 {
 	return ("Grade is too high");

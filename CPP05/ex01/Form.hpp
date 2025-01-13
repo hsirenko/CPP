@@ -6,17 +6,31 @@
 /*   By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 16:27:23 by hsirenko          #+#    #+#             */
-/*   Updated: 2025/01/12 19:18:40 by hsirenko         ###   ########.fr       */
+/*   Updated: 2025/01/13 20:18:24 by hsirenko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FORM_HPP
 # define FORM_HPP
 
-#include "Bureaucrat.hpp"
 #include <iostream>
 #include <string>
 #include <stdexcept>
+
+// Define color codes
+#define RESET   "\033[0m"
+#define BLACK   "\033[30m"
+#define RED     "\033[31m"
+#define GREEN   "\033[32m"
+#define YELLOW  "\033[33m"
+#define BLUE    "\033[34m"
+#define MAGENTA "\033[35m"
+#define CYAN    "\033[36m"
+#define WHITE   "\033[37m"
+#define BOLD    "\033[1m"
+#define UNDERLINE "\033[4m"
+
+class Bureaucrat; // forward declaration to avoid circular dependency
 
 class Form
 {

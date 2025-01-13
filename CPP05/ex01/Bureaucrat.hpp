@@ -6,7 +6,7 @@
 /*   By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 10:52:49 by hsirenko          #+#    #+#             */
-/*   Updated: 2025/01/12 19:18:50 by hsirenko         ###   ########.fr       */
+/*   Updated: 2025/01/13 20:19:59 by hsirenko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <string>
 #include <stdexcept>
 
+class Form; // forward declaration to avoid circular dependency
 
 class Bureaucrat
 {
@@ -33,7 +34,7 @@ class Bureaucrat
 		int getGrade() const;
 		void incrementGrade();
 		void decrementGrade();
-		void signForm(std::string formName, bool isSigned);
+		void signForm(Form &form);
 		
 		class GradeTooHighException : public std::exception
 		{
