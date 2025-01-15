@@ -6,7 +6,7 @@
 /*   By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 16:27:23 by hsirenko          #+#    #+#             */
-/*   Updated: 2025/01/13 22:13:55 by hsirenko         ###   ########.fr       */
+/*   Updated: 2025/01/15 01:20:04 by hsirenko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,9 @@ class AForm
 		bool getSigned() const;
 		int getGradeToSign() const;
 		int getGradeToExecute() const;
-		bool beSigned(Bureaucrat &bureaucrat);
-		virtual void execute() const = 0;
+		bool beSigned(Bureaucrat const &bureaucrat);
+		void execute(Bureaucrat const &executor);
+		virtual void executeAction(std::string const &parameter) const = 0; // pure virutal method
 	
 	class GradeTooHighException : public std::exception
 	{

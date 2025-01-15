@@ -6,7 +6,7 @@
 /*   By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 10:53:26 by hsirenko          #+#    #+#             */
-/*   Updated: 2025/01/13 20:51:49 by hsirenko         ###   ########.fr       */
+/*   Updated: 2025/01/15 01:13:19 by hsirenko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int main()
 		form2.beSigned(Bur2);
 		std::cout << GREEN << "Deconstructing " << RESET << std::endl;
 	}
-	catch (Form::GradeTooHighException & e) // check if we need this one 
+	catch (Form::GradeTooHighException & e)
 	{
 		std::cerr << MAGENTA << "High grade error: " << e.what() << RESET << std::endl;
 	}
@@ -77,7 +77,7 @@ int main()
 		form3.beSigned(Bur3);
 		std::cout << GREEN << "Deconstructing " << RESET << std::endl;
 	}
-	catch (Form::GradeTooHighException & e) // check if we need this one 
+	catch (Form::GradeTooHighException & e)
 	{
 		std::cerr << MAGENTA << "High grade error: " << e.what() << RESET << std::endl;
 	}

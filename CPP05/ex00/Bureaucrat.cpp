@@ -6,12 +6,11 @@
 /*   By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 10:53:30 by hsirenko          #+#    #+#             */
-/*   Updated: 2025/01/15 01:21:58 by hsirenko         ###   ########.fr       */
+/*   Updated: 2025/01/12 15:26:17 by hsirenko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "AForm.hpp"
 
 Bureaucrat::Bureaucrat() : name(""), grade(1)
 {
@@ -87,22 +86,4 @@ std::ostream &operator<<(std::ostream &stream, Bureaucrat const &bureaucrat)
 {
 	stream << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade();
 	return (stream);
-};
-
-void Bureaucrat::signForm(AForm &form)
-{
-	form.beSigned(*this);
-};
-
-void Bureaucrat::executeForm(AForm const &form)
-{
-	try
-	{
-		form.executeAction(name);
-		std::cout << YELLOW << "Bureaucrat " << this->name << " executed " << form.getName() << RESET << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cout << RED << "Bureaucrat " << this->name << " couldn't execute " << form.getName() << RESET << std::endl;
-	}
 };

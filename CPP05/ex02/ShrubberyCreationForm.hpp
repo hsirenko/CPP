@@ -6,7 +6,7 @@
 /*   By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 21:30:29 by hsirenko          #+#    #+#             */
-/*   Updated: 2025/01/13 22:08:34 by hsirenko         ###   ########.fr       */
+/*   Updated: 2025/01/14 23:06:52 by hsirenko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SHRUBBERYCREATIONFORM_HPP
 
 #include "AForm.hpp"
+#include <fstream>
 
 class ShrubberyCreationForm : public AForm
 {
@@ -22,10 +23,11 @@ class ShrubberyCreationForm : public AForm
 	public:
 		ShrubberyCreationForm();
 		ShrubberyCreationForm(ShrubberyCreationForm &target);
-		//ShrubberyCreationForm(ShrubberyCreationForm const &src);
+		ShrubberyCreationForm(ShrubberyCreationForm const &src);
 		ShrubberyCreationForm &operator=(ShrubberyCreationForm const &src);
-		~ShrubberyCreationForm();
+		virtual ~ShrubberyCreationForm();
 		void execute() const;
+		void executeAction(std::string const &target) const;
 };
 
 

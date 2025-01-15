@@ -6,7 +6,7 @@
 /*   By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 16:28:13 by hsirenko          #+#    #+#             */
-/*   Updated: 2025/01/13 21:24:34 by hsirenko         ###   ########.fr       */
+/*   Updated: 2025/01/15 01:53:58 by hsirenko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int AForm::getGradeToExecute() const
 
 
 //Methods
-bool AForm::beSigned(Bureaucrat &bureaucrat)
+bool AForm::beSigned(Bureaucrat const &bureaucrat)
 {
 	if (bureaucrat.getGrade() > this->gradeToSign)
 		throw AForm::GradeTooLowException();
@@ -84,7 +84,7 @@ bool AForm::beSigned(Bureaucrat &bureaucrat)
 	}
 	else if (this->isSigned == true)
 	{
-		std::cout << YELLOW << "AForm is already signed" << std::endl;
+		std::cout << YELLOW << "AForm is already signed" << RESET << std::endl;
 		return (true);
 	}
 	else
@@ -92,6 +92,16 @@ bool AForm::beSigned(Bureaucrat &bureaucrat)
 		this->isSigned = false;
 		throw AForm::GradeTooHighException();
 	}
+};
+
+void AForm::execute(Bureaucrat const &executor)
+{
+	if (isSigned == false)
+		throw AForm::GradeTooLowException();
+	if (executor.getGrade() > this->gradeToExecute)
+		throw AForm::GradeTooLowException();
+	else
+		executeAction(name);
 };
 
 //Overload Operator for <<
