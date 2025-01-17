@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 02:02:13 by hsirenko          #+#    #+#             */
-/*   Updated: 2025/01/15 02:06:46 by hsirenko         ###   ########.fr       */
+/*   Updated: 2025/01/17 20:13:53 by helensirenk      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,15 @@ class Intern
 		Intern(Intern const &src);
 		Intern &operator=(Intern const &src);
 		~Intern();
-		std::string *makeForm(std::string const &formName, std::string const &target);
+		AForm *makeForm(std::string formName, std::string target);
+
+		class FormNotFound : public std::exception
+		{
+			public:
+				const char *what() const throw();
+		};
+		private:
+			AForm *InternForms[3];
 };
 
 #endif

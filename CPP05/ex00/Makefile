@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+         #
+#    By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/12 10:52:52 by hsirenko          #+#    #+#              #
-#    Updated: 2025/01/12 14:38:51 by hsirenko         ###   ########.fr        #
+#    Updated: 2025/01/17 20:30:39 by helensirenk      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Variables
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-TARGET = Bureaucats
+TARGET = Bureaucrats
 SRC = main.cpp Bureaucrat.cpp
 
 # Default target

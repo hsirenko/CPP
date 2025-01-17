@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 10:53:26 by hsirenko          #+#    #+#             */
-/*   Updated: 2025/01/15 01:58:03 by hsirenko         ###   ########.fr       */
+/*   Updated: 2025/01/17 22:12:54 by helensirenk      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,84 +15,73 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
+
+
 
 int main()
 {
+	Intern intern;
+	
 	try
 	{
-		Bureaucrat Bob("Bob", 1); // try with a too low grade , such as 144
+		AForm *secretForm = intern.makeForm("shrubbery creation", "home");
+		Bureaucrat Bob("Bob", 1);
 		ShrubberyCreationForm shrub;
 
 		Bob.signForm(shrub);
 		shrub.executeAction("home");
 		
-		RobotomyRequestForm robot;
-		Bob.signForm(robot);
-		Bob.executeForm(robot);
-		
-		robot.executeAction("robot");
-		PresidentialPardonForm president;
-
-		Bob.signForm(president);
-		president.executeAction("Elon Musk");
-	}
 	
-	catch (AForm::GradeTooHighException & e)
-	{
-		std::cerr << MAGENTA << "High grade error: " << e.what() << RESET << std::endl;
-	}
-	catch (AForm::GradeTooLowException & e)
-	{
-		std::cerr << CYAN << "Low grade error: " << e.what() << RESET << std::endl;
+		Bob.signForm(*secretForm);
+		Bob.executeForm(*secretForm);
+
+		delete secretForm;
 	}
 
-	Bureaucrat *Alice = new Bureaucrat("Alice", 144);
-	AForm *b = new ShrubberyCreationForm();
-
-	std::cout << std::endl;
-	std::cout << *Alice << std::endl;
-	std::cout << *b << std::endl;
+	catch(const std::exception& e)
+	{
+		std::cerr << RED << "Exception: " << e.what() << RESET << std::endl;
+	}
 
 	try
 	{
-		b->beSigned(*Alice);
-		b->beSigned(*Alice);
+		Intern someRandomIntern;
+		AForm *rrf;
+
+		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+
+		delete rrf;
 	}
-	catch (AForm::GradeTooHighException & e)
+	
+	catch(const std::exception& e)
 	{
-		std::cerr << MAGENTA << "High grade error: " << e.what() << RESET << std::endl;
+		std::cerr << RED << "Exception: " << e.what() << RESET << std::endl;
 	}
-	catch (AForm::GradeTooLowException & e)
-	{
-		std::cerr << CYAN << "Low grade error: " << e.what() << RESET << std::endl;
-	}
-
-	delete Alice;
-	delete b;
-
-
-	Bureaucrat *Kris_for_robot = new Bureaucrat("Kris_for_robot", 144);
-	AForm *c = new RobotomyRequestForm();
-
-	std::cout << std::endl;
-	std::cout << *Kris_for_robot << std::endl;
-	std::cout << *c << std::endl;
 
 	try
 	{
-		c->beSigned(*Kris_for_robot);
-		c->beSigned(*Kris_for_robot);
-	}
-	catch (AForm::GradeTooHighException & e)
-	{
-		std::cerr << MAGENTA << "High grade error: " << e.what() << RESET << std::endl;
-	}
-	catch (AForm::GradeTooLowException & e)
-	{
-		std::cerr << CYAN << "Low grade error: " << e.what() << RESET << std::endl;
+		AForm *secretForm = intern.makeForm("presidential pardon", "Elon Musk");
+	
+		delete secretForm;
 	}
 
-	delete Kris_for_robot;
-	delete c;
+	catch(const std::exception& e)
+	{
+		std::cerr << RED << "Exception: " << e.what() << RESET << std::endl;
+	}
+
+	try
+	{
+		AForm *secretForm = intern.makeForm("unkown form", "unknown guy");
 	
+		delete secretForm;
+	}
+
+	catch(const std::exception& e)
+	{
+		std::cerr << RED << "Exception: " << e.what() << RESET << std::endl;
+	}
+	
+
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 16:28:13 by hsirenko          #+#    #+#             */
-/*   Updated: 2025/01/15 01:53:58 by hsirenko         ###   ########.fr       */
+/*   Updated: 2025/01/17 20:27:43 by helensirenk      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 // Constructors 
 AForm::AForm() : name(""), isSigned(false), gradeToSign(1), gradeToExecute(1)
 {
-	std::cout << "AForm " << this->name << " was created" << std::endl;
+	//std::cout << "AForm " << this->name << " was created" << std::endl;
 	this->isSigned = false;
 };
 
@@ -26,27 +26,27 @@ AForm::AForm(std::string const name, int gradeToSign, int gradeToExecute) : name
 		throw AForm::GradeTooHighException();
 	if (gradeToSign > 150 || gradeToExecute > 150)
 		throw AForm::GradeTooLowException();
-	std::cout << "Form " << this->name << " was created" << std::endl;
+	//std::cout << "Form " << this->name << " was created" << std::endl;
 };
 
 AForm::AForm(const AForm &src) : name(src.name), isSigned(src.isSigned), gradeToSign(src.gradeToSign), gradeToExecute(src.gradeToExecute)
 {
 	*this = src;
-	std::cout << "AForm " << src.getName() << " was copied into " << this->getName() << std::endl;
+	//std::cout << "AForm " << src.getName() << " was copied into " << this->getName() << std::endl;
 };
 
 AForm &AForm::operator=(const AForm &src)
 {
 	if (this != &src)
 		this->isSigned = src.isSigned;
-	std::cout << "AForm " << this->name << " was copied and attributes assigned" << std::endl;
+	//std::cout << "AForm " << this->name << " was copied and attributes assigned" << std::endl;
 	return (*this);
 };
 
 //Destructor
 AForm::~AForm()
 {
-	std::cout << "AFrom " << this->name << " was destroyed" << std::endl;
+	//std::cout << "AFrom " << this->name << " was destroyed" << std::endl;
 }
 
 //Getters

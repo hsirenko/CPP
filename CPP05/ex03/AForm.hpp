@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 16:27:23 by hsirenko          #+#    #+#             */
-/*   Updated: 2025/01/15 01:20:04 by hsirenko         ###   ########.fr       */
+/*   Updated: 2025/01/17 17:57:59 by helensirenk      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ class AForm
 		bool beSigned(Bureaucrat const &bureaucrat);
 		void execute(Bureaucrat const &executor);
 		virtual void executeAction(std::string const &parameter) const = 0; // pure virutal method
+		virtual AForm *clone(std::string target) = 0;
 	
 	class GradeTooHighException : public std::exception
 	{

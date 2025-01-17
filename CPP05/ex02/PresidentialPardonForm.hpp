@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 21:30:37 by hsirenko          #+#    #+#             */
-/*   Updated: 2025/01/14 23:13:16 by hsirenko         ###   ########.fr       */
+/*   Updated: 2025/01/17 17:54:35 by helensirenk      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ class PresidentialPardonForm : public AForm
 		PresidentialPardonForm(PresidentialPardonForm &target);
 		PresidentialPardonForm &operator=(PresidentialPardonForm const &src);
 		~PresidentialPardonForm();
-		//void pardon(std::string const &target);
 		void executeAction(std::string const &target) const;
 		
 };

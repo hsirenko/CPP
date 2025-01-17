@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+         #
+#    By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/12 10:52:52 by hsirenko          #+#    #+#              #
-#    Updated: 2025/01/13 21:30:57 by hsirenko         ###   ########.fr        #
+#    Updated: 2025/01/17 22:20:06 by helensirenk      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Variables
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-TARGET = Bureaucats
+TARGET = Bureaucrats
 SRC = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 
 # Default target
@@ -26,9 +26,11 @@ $(TARGET): $(SRC)
 # Clean up build files
 clean:
 	rm -f $(TARGET)
+	find . -type f ! -name "*.*" -not -name "Makefile" -exec rm -f {} \;  # Remove files without extensions excluding Makefile
 
 fclean : clean
 		rm -f $(TARGET)
+		find . -type f ! -name "*.*" -not -name "Makefile" -exec rm -f {} \;  # Remove files without extensions excluding Makefile
 
 re: fclean all
 
