@@ -6,7 +6,7 @@
 /*   By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 17:36:25 by hsirenko          #+#    #+#             */
-/*   Updated: 2025/01/21 21:34:32 by helensirenk      ###   ########.fr       */
+/*   Updated: 2025/01/21 23:00:03 by helensirenk      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int main(int argc, char **argv)
 		std::cout << "Error: wrong number of arguments or input is empty" << std::endl;
 		return (1);
 	}
-	//ScalarConverter s_c(argv[1]);
 	ScalarConverter::convert(argv[1]);
 
 	return (0);

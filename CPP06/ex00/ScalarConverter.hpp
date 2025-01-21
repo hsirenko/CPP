@@ -6,7 +6,7 @@
 /*   By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 13:19:32 by hsirenko          #+#    #+#             */
-/*   Updated: 2025/01/21 21:37:05 by helensirenk      ###   ########.fr       */
+/*   Updated: 2025/01/21 22:59:50 by helensirenk      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,6 @@ class ScalarConverter
 	public:
 		~ScalarConverter();
 		static void convert(const std::string &input);
-		//char convertToChar(std::string input);
-		//int convertToInt(std::string input);
-		//float convertToFloat(std::string input);
-		//double convertToDouble(std::string input);
 };
 
 #endif
