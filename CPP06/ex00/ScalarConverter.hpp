@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 13:19:32 by hsirenko          #+#    #+#             */
-/*   Updated: 2025/01/20 19:25:07 by hsirenko         ###   ########.fr       */
+/*   Updated: 2025/01/21 20:40:10 by helensirenk      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,21 @@
 #include <cmath>
 #include <limits>
 #include <cstdlib>
+#include <iomanip>
 
 class ScalarConverter
 {
 	private:
 		std::string input;
 		ScalarConverter();
-	public:
-		
 		ScalarConverter(std::string input);
 		ScalarConverter(ScalarConverter const &src);
 		ScalarConverter &operator=(ScalarConverter const &src);
-		virtual ~ScalarConverter();
+
+	public:
+		~ScalarConverter();
 		std::string getInput() const;
-		void convert(std::string input);
+		static void convert(const std::string &input);
 		//char convertToChar(std::string input);
 		//int convertToInt(std::string input);
 		//float convertToFloat(std::string input);
