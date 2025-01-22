@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/06 12:31:07 by helensirenk       #+#    #+#             */
-/*   Updated: 2025/01/09 16:59:17 by hsirenko         ###   ########.fr       */
+/*   Created: 2025/01/22 19:10:28 by hsirenko          #+#    #+#             */
+/*   Updated: 2025/01/22 19:52:48 by hsirenko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#ifndef ITER_HPP
+# define ITER_HPP
 
-#include "ClapTrap.hpp"
+#include <iostream>
+#include <string>
 
-class ScavTrap : virtual public ClapTrap
+template <typename T>
+void iter(T *array, int length, void (*f)(T const &array))
 {
-    public:
-        ScavTrap();
-        ScavTrap(const std::string &name);
-        ScavTrap(ScavTrap const &src);
-        ScavTrap &operator=(ScavTrap const &src);
-        ~ScavTrap();
+	for (int i = 0; i < length; i++)
+		f(array[i]);
+};
 
-        void guardGate();
+template <typename T>
+void iter(T *array, int length, void (*f)(T  &))
+{
+	for (int i = 0; i < length; i++)
+		f(array[i]);
 };
 
 #endif

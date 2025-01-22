@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+        */
+/*   By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 10:51:47 by helensirenk       #+#    #+#             */
-/*   Updated: 2025/01/08 15:52:37 by helensirenk      ###   ########.fr       */
+/*   Updated: 2025/01/09 16:48:20 by hsirenko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,3 @@ void ClapTrap::beRepaired(unsigned int amount)
     hitPoints += amount;
     energyPoints -= 1;
 };
-
-// void ClapTrap::getName()
-// {
-//     std::cout << "ClapTrap name is " << this->name << std::endl;
-// };

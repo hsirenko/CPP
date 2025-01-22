@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+        */
+/*   By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 16:06:36 by helensirenk       #+#    #+#             */
-/*   Updated: 2025/01/08 14:49:18 by helensirenk      ###   ########.fr       */
+/*   Updated: 2025/01/09 16:59:26 by hsirenko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ class FragTrap : virtual public ClapTrap
         ~FragTrap();
 
         void highFivesGuys(void);
-        void attack(const std::string &target);
 };
 
 #endif

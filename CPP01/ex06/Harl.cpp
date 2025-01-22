@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+        */
+/*   By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 13:30:24 by helensirenk       #+#    #+#             */
-/*   Updated: 2024/12/28 18:38:24 by helensirenk      ###   ########.fr       */
+/*   Updated: 2025/01/02 16:49:09 by hsirenko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,13 @@ void Harl::complain(std::string level)
     {
         case 0:
             debug(); //intentional [[fallthrough]] attribute allows execution to continue into the next case without a break. This ensures that all messages from the given level and above are displayed.
+			// fall through
         case 1:
             info();
+			// fall through
         case 2:
             warning();
+			// fall through
         case 3:
             error();
             break;

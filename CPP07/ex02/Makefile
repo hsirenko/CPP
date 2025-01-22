@@ -5,16 +5,16 @@
 #                                                     +:+ +:+         +:+      #
 #    By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/12/19 17:25:06 by hsirenko          #+#    #+#              #
-#    Updated: 2025/01/09 13:05:44 by hsirenko         ###   ########.fr        #
+#    Created: 2025/01/12 10:52:52 by hsirenko          #+#    #+#              #
+#    Updated: 2025/01/22 19:55:51 by hsirenko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Variables
-CXX = g++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 #-fno-elide-constructors
-TARGET = orthodox
-SRC = main.cpp Fixed.cpp
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+TARGET = Array
+SRC = main.cpp
 
 # Default target
 all: $(TARGET)
@@ -33,4 +33,4 @@ fclean : clean
 re: fclean all
 
 # Phony targets
-.PHONY: all clean
+.PHONY: all clean fclean re

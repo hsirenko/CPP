@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+        */
+/*   By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 00:31:57 by helensirenk       #+#    #+#             */
-/*   Updated: 2025/01/09 10:23:58 by helensirenk      ###   ########.fr       */
+/*   Updated: 2025/01/10 16:13:03 by hsirenko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animals.hpp"
 
-Dog::Dog()
+Dog::Dog() : Animal()
 {
     std::cout << "Dog default constructor called" << std::endl;
     this->type = "Dog";
 };
 
-Dog::Dog(Dog const &src)
+Dog::Dog(Dog const &src) : Animal()
 {
     std::cout << "Dog copy constructor called" << std::endl;
     *this = src;

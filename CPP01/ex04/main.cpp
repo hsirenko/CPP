@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+        */
+/*   By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 20:35:56 by helensirenk       #+#    #+#             */
-/*   Updated: 2024/12/27 22:33:59 by helensirenk      ###   ########.fr       */
+/*   Updated: 2025/01/02 16:41:14 by hsirenko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,22 @@
 void stringReplace(const std::string& filename, const std::string& s1, const std::string& s2)
 {
     std::ifstream inFile;
-    inFile.open(filename);
+    inFile.open(filename.c_str());
     if (!inFile.is_open())
     {
         std::cerr << "Error: could not open file " << filename << "\n" << std::endl;
         return ;
     }
 
+	if (inFile.peek() == EOF)
+	{
+		std::cerr << "Error: file cannot be empty\n" << std::endl;
+		inFile.close();
+		return ;
+	}
+
     std::string outFileName = filename + ".replace";
-    std::ofstream outFile(outFileName); // creates output file
+    std::ofstream outFile(outFileName.c_str()); // creates output file
      if (!outFile.is_open())
     {
         std::cerr << "Error: could not create file " << outFileName << "\n" << std::endl;
@@ -33,19 +40,29 @@ void stringReplace(const std::string& filename, const std::string& s1, const std
     }
 
     std::string line;
+	bool found = false;
     while (std::getline(inFile, line))
     {
         size_t pos = 0;
         while ((pos = line.find(s1, pos)) != std::string::npos) // (-1)
         {
+			found = true;
             line = line.substr(0, pos) + s2 + line.substr(pos + s1.length());
             pos += s2.length();
         }
         outFile << line << "\n";
     }
 
-    inFile.close();
+	inFile.close();
     outFile.close();
+
+	if (!found)
+	{
+		std::cerr << "Error: string " << s1 << " not found in file " << filename << "\n" << std::endl;
+		std::remove(outFileName.c_str());
+		return ;
+	} 
+
     std::cout << "File " << filename << " has been replaced with " << s2 << " instead of " << s1 << " in " << outFileName << "\n" << std::endl;
 }
 

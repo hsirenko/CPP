@@ -6,13 +6,13 @@
 #    By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/06 10:51:15 by helensirenk       #+#    #+#              #
-#    Updated: 2025/01/08 16:08:44 by helensirenk      ###   ########.fr        #
+#    Updated: 2025/01/08 16:01:50 by helensirenk      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Variables
 CXX = g++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 TARGET = DiamondTrap
 SRC = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 

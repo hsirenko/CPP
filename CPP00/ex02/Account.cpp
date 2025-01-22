@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Account.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+        */
+/*   By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 23:13:21 by helensirenk       #+#    #+#             */
-/*   Updated: 2024/12/18 17:19:29 by helensirenk      ###   ########.fr       */
+/*   Updated: 2024/12/19 15:42:30 by hsirenko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,12 @@ int	Account::getNbWithdrawals( void )
 
 void	Account::_displayTimestamp( void )
 {
-    std::time_t now = std::time(nullptr);
+    std::time_t now = std::time(0);
     std::tm* localTime = std::localtime(&now); //Converts the time_t object into a tm structure representing the local time.
     
-    std::cout << "[" << std::put_time(localTime, "%Y%m%d_%H%M%S") << "] ";
+	char buff[50];
+	std::strftime(buff, sizeof(buff), "%Y%m%d_%H%M%S", localTime);
+	std::cout << "[" << buff << "] ";
 }
 
 void	Account::makeDeposit( int deposit )

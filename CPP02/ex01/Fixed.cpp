@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+        */
+/*   By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 10:34:17 by helensirenk       #+#    #+#             */
-/*   Updated: 2025/01/04 06:54:14 by helensirenk      ###   ########.fr       */
+/*   Updated: 2025/01/09 13:06:20 by hsirenko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ Fixed::Fixed(const int integer)
 Fixed::Fixed(const float floating)
 {
     std::cout << "Float constructor called with value: " << floating << std::endl;
-    this->fixedPointValue = std::roundf(floating * (1 << fractionalBits));  
+    this->fixedPointValue = roundf(floating * (1 << fractionalBits));  
 };
 
 std::ostream &operator<<(std::ostream &stream, const Fixed &fixed)

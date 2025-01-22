@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+        */
+/*   By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 13:38:45 by helensirenk       #+#    #+#             */
-/*   Updated: 2025/01/09 15:14:24 by helensirenk      ###   ########.fr       */
+/*   Updated: 2025/01/09 16:59:38 by hsirenko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), Scav
     std::cout << "DiamondTrap name constructor called" << std::endl;
 };
 
-DiamondTrap::DiamondTrap(const DiamondTrap &src)
+DiamondTrap::DiamondTrap(const DiamondTrap &src) : ClapTrap(src), ScavTrap(src), FragTrap(src)
 {
     *this = src;
     std::cout << "DiamondTrap copy constructor called" << std::endl;
@@ -48,8 +48,3 @@ void DiamondTrap::whoAmI()
 {
     std::cout << this->name << " ClapTrap name is " << ClapTrap::name << std::endl;
 };
-
-// void DiamondTrap::attack(const std::string &target)
-// {
-//     ScavTrap::attack(target);
-// }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+        */
+/*   By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 10:51:50 by helensirenk       #+#    #+#             */
-/*   Updated: 2025/01/06 15:30:53 by helensirenk      ###   ########.fr       */
+/*   Updated: 2025/01/09 16:56:51 by hsirenko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

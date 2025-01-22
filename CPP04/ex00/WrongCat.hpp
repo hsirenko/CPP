@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+        */
+/*   By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 23:59:53 by helensirenk       #+#    #+#             */
-/*   Updated: 2025/01/10 00:22:02 by helensirenk      ###   ########.fr       */
+/*   Updated: 2025/01/12 12:38:46 by hsirenko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ class WrongAnimal
         WrongAnimal();
         WrongAnimal(WrongAnimal const &src);
         WrongAnimal &operator=(WrongAnimal const &src);
-        ~WrongAnimal();
-        void makeSound() const;
+        virtual ~WrongAnimal(); // Virtual destructors are necessary when you expect polymorphic behavior
+        void makeSound() const; //They ensure the correct destruction order: derived class destructor first, followed by the base class destructor.
         std::string getType() const;
 };
 

@@ -20,17 +20,17 @@ Base *generate(void)
         case 2:
             return new C();
         default:
-            return nullptr; // should never happen
+            return NULL; // should never happen
     }
 };
 
 void identify(Base *p)
 {
-    if (dynamic_cast<A*>(p) != nullptr)
+    if (dynamic_cast<A*>(p) != NULL)
         std::cout << "Type by pointer: A" << std::endl;
-    else if (dynamic_cast<B*>(p) != nullptr)
+    else if (dynamic_cast<B*>(p) != NULL)
         std::cout << "Type by pointer: B" << std::endl;
-    else if (dynamic_cast<C*>(p) != nullptr)
+    else if (dynamic_cast<C*>(p) != NULL)
         std::cout << "Type by pointer: C" << std::endl;
     else
         std::cout << "Unknown type" << std::endl;
@@ -45,7 +45,7 @@ void identify(Base &p)
         std::cout << "Type by reference: A" << std::endl;
         return ; 
     }
-    catch(const std::bad_cast&) // The catch block catches the exception thrown by the failed cast, allowing the function to attempt the next type.
+    catch(const std::exception&) // The catch block catches the exception thrown by the failed cast, allowing the function to attempt the next type.
     {
         //if not A, continue
     }
@@ -56,7 +56,7 @@ void identify(Base &p)
         std::cout << "Type by reference: B" << std::endl;
         return ;
     }
-    catch(const std::bad_cast&)
+    catch(const std::exception&)
     {
         //if not B, continue
     }
@@ -67,7 +67,7 @@ void identify(Base &p)
         std::cout << "Type by reference: C" << std::endl;
         return ;
     }
-    catch(const std::bad_cast&)
+    catch(const std::exception&)
     {
         //if not C, continue
     }

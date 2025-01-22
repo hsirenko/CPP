@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+        */
+/*   By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 16:06:23 by helensirenk       #+#    #+#             */
-/*   Updated: 2025/01/08 16:06:00 by helensirenk      ###   ########.fr       */
+/*   Updated: 2025/01/09 16:59:30 by hsirenko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 FragTrap::FragTrap() : ClapTrap()
 {
     std::cout << "FragTrap default constructor called" << std::endl;
+	hitPoints = 100;
+    energyPoints = 100;
+    attackDamage = 30;
 };
 
 FragTrap::FragTrap(const std::string &name) : ClapTrap(name)
@@ -25,7 +28,7 @@ FragTrap::FragTrap(const std::string &name) : ClapTrap(name)
     std::cout << "FragTrap set name constructor called" << std::endl;
 };
 
-FragTrap::FragTrap(FragTrap const &src)
+FragTrap::FragTrap(FragTrap const &src) : ClapTrap(src)
 {
     std::cout << "FragTrap copy constructor called" << std::endl;
     *this = src;
@@ -52,15 +55,4 @@ FragTrap::~FragTrap()
 void FragTrap::highFivesGuys(void)
 {
     std::cout << "FragTrap " << this->name << " is asking for a high five!" << std::endl;
-};
-
-void FragTrap::attack(const std::string &target)
-{
-    if (energyPoints <= 0 || hitPoints <= 0)
-    {
-        std::cout << "FragTrap " << this->name << " cannot attack! Not enough energy points or hit points!" << std::endl;
-        return ;
-    }
-    std::cout << "FragTrap " << this->name << " attacks " << target << ", causing " << this->attackDamage << " points of damage!" << std::endl;
-    energyPoints -= 1;
 };

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+        */
+/*   By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 00:06:07 by helensirenk       #+#    #+#             */
-/*   Updated: 2025/01/22 00:09:46 by helensirenk      ###   ########.fr       */
+/*   Updated: 2025/01/22 14:12:04 by hsirenko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include <iostream>
 #include <string>
+
+typedef unsigned long uintptr_t; //// Define uintptr_t manually for C++98 compatibility
 
 struct Data
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+        */
+/*   By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 13:31:47 by hsirenko          #+#    #+#             */
-/*   Updated: 2025/01/21 21:53:39 by helensirenk      ###   ########.fr       */
+/*   Updated: 2025/01/22 14:00:21 by hsirenko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,35 @@ void ScalarConverter::convert(const std::string &input)
         std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(c) << std::endl;
         return;
     }
+	if (input == "nan" || input == "nanf")
+	{
+        std::cout << "char: impossible" << std::endl;
+        std::cout << "int: impossible" << std::endl;
+        std::cout << "float: nanf" << std::endl;
+        std::cout << "double: nan" << std::endl;
+        return;
+	}
+	if (input == "+inf" || input == "+inff")
+	{
+        std::cout << "char: impossible" << std::endl;
+        std::cout << "int: impossible" << std::endl;
+        std::cout << "float: +inff" << std::endl;
+        std::cout << "double: +inf" << std::endl;
+        return;
+	}
+	if (input == "-inf" || input == "-inff")
+	{
+        std::cout << "char: impossible" << std::endl;
+        std::cout << "int: impossible" << std::endl;
+        std::cout << "float: -inff" << std::endl;
+        std::cout << "double: -inf" << std::endl;
+        return;
+	}
 
     // Try to parse the input as a double
-    try 
-	{
-        value = std::stod(input);
-    } 
-	catch (const std::exception &) 
+	std::stringstream ss(input);
+	
+	if (!(ss >> value))
 	{
         std::cout << "char: impossible" << std::endl;
         std::cout << "int: impossible" << std::endl;
