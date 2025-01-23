@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+         #
+#    By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/12 10:52:52 by hsirenko          #+#    #+#              #
-#    Updated: 2025/01/22 19:55:51 by hsirenko         ###   ########.fr        #
+#    Updated: 2025/01/23 14:58:00 by helensirenk      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,12 +15,13 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 TARGET = Array
 SRC = main.cpp
+HEADERS = Array.hpp Array.tpp
 
 # Default target
 all: $(TARGET)
 
 # Rule to build the target
-$(TARGET): $(SRC)
+$(TARGET): $(SRC) $(HEADERS)
 	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SRC) $(LDFLAGS)
 
 # Clean up build files

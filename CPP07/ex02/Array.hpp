@@ -3,48 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 19:56:01 by hsirenko          #+#    #+#             */
-/*   Updated: 2025/01/22 20:50:37 by hsirenko         ###   ########.fr       */
+/*   Updated: 2025/01/23 15:37:51 by helensirenk      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ARRAY_HPP
 # define ARRAY_HPP
 
-template<class T>
+#include <iostream>
+#include <string>
+
+template <typename T>
 class Array
 {
 	private:
 		T* array;
-		unsigned int n;
+		unsigned int array_size;
 	public:
-		Array() : array(NULL);
-		Array(unsigned int n) : n(n)
-		{
-			array = new T[n];
-		};
-		Array(const Array &sc)
-		{
-			*this = src;
-		};
-		Array &operator=(const Array &src)
-		{
-			if (this != &src)
-			{
-				delete[] array;
-				this->n = src.n;
-				this->array = new T[n];
-				for (unsigned int i = 0; i < n; i++)
-					this->array[i] = src.array[i];
-			}
-			return (*this);
-		};
-		~Array()
-		{
-			delete[] array;
-		};
+		Array();
+		Array(unsigned int n);
+		Array(const Array &src);
+		Array &operator=(const Array &src);
+		~Array();
+		T &operator[](unsigned int i); // subscript operator for accessing elements
+		const T &operator[](unsigned int i) const; // const subscript operator for accessing elements
+		unsigned int size() const;
 };
+
+#include "Array.tpp"
 
 #endif
