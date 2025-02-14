@@ -6,7 +6,7 @@
 /*   By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 14:38:23 by helensirenk       #+#    #+#             */
-/*   Updated: 2025/02/14 17:56:35 by helensirenk      ###   ########.fr       */
+/*   Updated: 2025/02/14 18:43:56 by helensirenk      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,24 @@
 #include <list>
 
 template <typename T>
-class MutantStack : public std::stack<T>
+class MutantStack : public std::stack<T, std::deque<T> >
 {
     public:
-        using std::stack<T>::c;
+        MutantStack() {};
+        MutantStack(MutantStack const &src) : std::stack<T>(src) {};
+        MutantStack &opoerator(MutantStack const &src)
+        {
+            if (*this != src)
+            {
+                this->c = src.c;
+            }
+            return *this;
+        };
+        
+        ~MutantStack()
+        {
+            this->c.clear();
+        }
 
         typedef typename std::stack<T>::container_type::iterator iterator; //LIFO -> last-in, first_out :: container type -> protected member type of std::stack<T> (underlying container)
         typedef typename std::stack<T>::container_type::const_iterator const_iterator;
