@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 18:23:47 by hsirenko          #+#    #+#             */
-/*   Updated: 2025/02/13 19:38:54 by hsirenko         ###   ########.fr       */
+/*   Updated: 2025/02/14 14:14:51 by helensirenk      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,26 @@
 #include <algorithm>
 #include <vector>
 #include <exception>
+#include <iterator>
 
 class Span
 {
 	private:
-		unsigned int _n;
 		unsigned int _size;
 		std::vector<int> _numbers;
 
-		public:
+		typedef std::vector <int>::iterator It;
+
+	public:
 		Span();
 		Span(unsigned int n);
 		Span(Span const &src);
 		Span &operator=(Span const &src);
 		~Span();
-		int addNumber(int n);
+		void addNumber(int n);
 		int shortestSpan();
 		int longestSpan();
-		template <typename Iterator>
-		void addManyNumbers(Iterator begin, Iterator end);
+		void addRange(It begin, It end);
 		void printNumbers();
 
 		class NotEnoughNumbersException : public std::exception
@@ -44,6 +45,15 @@ class Span
 				const char *what() const throw()
 				{
 					return "Not enough numbers to find a span";
+				}
+		};
+
+		class SpanIsFullException : public std::exception
+		{
+			public:
+				const char *what() const throw()
+				{
+					return "Our Span got full 😿 ";
 				}
 		};
 };
