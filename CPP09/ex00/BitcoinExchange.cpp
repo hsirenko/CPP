@@ -44,9 +44,9 @@ bool BitcoinExchange::isValidCalendarDate(const std::string &date)
 {	
 	if (!isValidDateFormat(date))
 		return false;
-	int year = std::stoi(date.substr(0, 4));
-	int month = std::stoi(date.substr(5, 2));
-	int day = std::stoi(date.substr(8, 2));
+	int year = stringToInt(date.substr(0, 4));
+	int month = stringToInt(date.substr(5, 2));
+	int day = stringToInt(date.substr(8, 2));
 	if (month < 1 || month > 12)
 		return false;
 	int daysInMonth[] = {31, (isLeapYear(year) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
@@ -65,6 +65,8 @@ void BitcoinExchange::readFile(const std::string &filename)
     }
 
     std::string line;
+	char lastChar = line[line.size() - 1];
+	char firstChar = line[0];
 	if (!std::getline(file, line)) // try to read the first line
 	{
 		std::cerr << "Error: the file is empty" << std::endl;
@@ -83,9 +85,9 @@ void BitcoinExchange::readFile(const std::string &filename)
         size_t comment_pos = line.find('#');
         if (comment_pos != std::string::npos)
             line = line.substr(0, comment_pos); // remove comments
-        while (!line.empty() && std::isspace(line.back()))
-            line.pop_back();
-        while (!line.empty() && std::isspace(line.front()))
+        while (!line.empty() && std::isspace(lastChar))
+            line.erase(line.size() - 1);
+        while (!line.empty() && std::isspace(firstChar))
             line.erase(line.begin());
 		
 		//parsing each line
@@ -149,7 +151,7 @@ void BitcoinExchange::loadData(const std::string &filename)
 		// Trim whitespace from date
 		date.erase(date.find_last_not_of(" \n\r\t")+1);
 		date.erase(0, date.find_first_not_of(" \n\r\t"));
-		float rate = std::stof(line.substr(comma + 1).c_str());
+		float rate = stringToFloat(line.substr(comma + 1).c_str());
 		_data[date] = rate; // store the date and rate in the map
 		//std::cout << std::fixed << std::setprecision(2); // set precision for all following floats
 		// std::cout << "Loaded data: " << date << " -> " << rate << std::endl;
@@ -170,3 +172,19 @@ float BitcoinExchange::getExchangeRateForDate(const std::string &date) const {
 	}
 	return it->second; // 5. Return the exchange rate for the found date
 };
+
+float BitcoinExchange::stringToFloat(const std::string &str) const
+{
+	std::stringstream ss(str);
+	float result;
+	ss >> result;
+	return result;
+}
+
+int BitcoinExchange::stringToInt(const std::string &str) const
+{
+	std::stringstream ss(str);
+	int result;
+	ss >> result;
+	return result;
+}

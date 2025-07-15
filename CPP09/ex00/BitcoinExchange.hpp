@@ -6,6 +6,7 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <iomanip>
 
 class BitcoinExchange {
     public:
@@ -20,6 +21,8 @@ class BitcoinExchange {
         bool isValidCalendarDate(const std::string &date);
         void loadData(const std::string &filename);
         float getExchangeRateForDate(const std::string &date) const;
+		float stringToFloat(const std::string &str) const;
+		int stringToInt(const std::string &str) const;
 
     private:
         std::map<std::string, float> _data;
