@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+        */
+/*   By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 15:53:20 by helensirenk       #+#    #+#             */
-/*   Updated: 2025/07/15 19:42:52 by helensirenk      ###   ########.fr       */
+/*   Updated: 2025/07/18 23:05:23 by hsirenko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,9 @@ int evaluateRPN(const std::string &input) {
         }
         else {
             try {
-                int number = std::stoi(token);
+				std::istringstream iss(token);
+                int number;
+				iss >> number;
                 stack.push(number);
                // std::cout << "Pushed number: " << number << std::endl;
                 //printStack(stack);

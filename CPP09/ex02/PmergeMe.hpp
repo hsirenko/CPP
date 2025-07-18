@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+        */
+/*   By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 07:29:31 by helensirenk       #+#    #+#             */
-/*   Updated: 2025/07/17 07:30:47 by helensirenk      ###   ########.fr       */
+/*   Updated: 2025/07/18 22:58:48 by hsirenko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 #include <vector>
 #include <deque>
 #include <algorithm>
+#include <cctype>
+#include <ctime>
+#include <iomanip>
 
 // operator overload for std::pair<int, int>
 inline std::ostream& operator<<(std::ostream &os, const std::pair<int, int> &p) {
@@ -28,6 +31,7 @@ inline std::ostream& operator<<(std::ostream &os, const std::pair<int, int> &p) 
 
 bool CompareBySecond(const std::pair<int, int> &a, const std::pair<int, int> &b);
 std::vector<int> GenerateJacobsthal(size_t max);
+bool is_digits(const std::string &str);
 
 // Print any sequence (vector, deque, etc.)
 template<typename T>
@@ -81,24 +85,32 @@ void mergeSort(T &container) {
     // std::cout << "JacobsthalSeq: ";
     // printSequence(JacobsthalSeq);
     
-    // Insert pend elements (skip the first, which is already in mainChain)
-    for (size_t j = 1; j < JacobsthalSeq.size(); ++j) {
+    // Insert pend elements
+    if (!pend.empty()) {
+		typename T::iterator pos = std::lower_bound(mainChain.begin(), mainChain.end(), pend[0]);
+		mainChain.insert(pos, pend[0]);
+	}
+	for (size_t j = 1; j < JacobsthalSeq.size(); ++j) {
         size_t idx = JacobsthalSeq[j];
+		if (idx == 0)
+			continue;
         if (idx >= pend.size())
             continue;
         int insertVal = pend[idx];
         typename T::iterator pos = std::lower_bound(mainChain.begin(), mainChain.end(), insertVal);
-        if (pos == mainChain.end() || *pos != insertVal) {
-            //std::cout << "Inserting " << insertVal << " at position " << (pos - mainChain.begin()) << std::endl;
-            mainChain.insert(pos, insertVal);
-        }
+		mainChain.insert(pos, insertVal);
+        // if (pos == mainChain.end() || *pos != insertVal) { // this was checking for duplicates
+        //     //std::cout << "Inserting " << insertVal << " at position " << (pos - mainChain.begin()) << std::endl;
+        //     mainChain.insert(pos, insertVal);
+        // }
     }
     // If the input size is odd, insert the last unpaired element
-    if (container.size() % 2 != 0) {
+    if (container.size() % 2 != 0 && container.size() % 2 == pairs.size()) {
         int last = container.back();
         typename T::iterator pos = std::lower_bound(mainChain.begin(), mainChain.end(), last);
-        if (pos == mainChain.end() || *pos != last)
-            mainChain.insert(pos, last);
+		mainChain.insert(pos, last);
+        // if (pos == mainChain.end() || *pos != last) // this was checking for duplicates
+        //     mainChain.insert(pos, last);
     }
     container = mainChain;
 //    std::cout << "final container: ";

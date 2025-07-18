@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helensirenko <helensirenko@student.42.f    +#+  +:+       +#+        */
+/*   By: hsirenko <hsirenko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 07:29:11 by helensirenk       #+#    #+#             */
-/*   Updated: 2025/07/17 07:29:28 by helensirenk      ###   ########.fr       */
+/*   Updated: 2025/07/18 22:11:37 by hsirenko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,12 @@ std::vector<int> GenerateJacobsthal(size_t n) {
     indices.insert(indices.begin(), 0); // Always insert 0 first
 
     return indices;
+}
+
+bool is_digits(const std::string &str) {
+	for (std::string::const_iterator it = str.begin(); it != str.end(); it++) {
+		if (!std::isdigit(*it))
+			return false;
+	}
+	return true;
 }
