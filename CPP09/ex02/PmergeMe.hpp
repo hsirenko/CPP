@@ -95,7 +95,7 @@ void mergeSort(T &container) {
     }
     // If the input size is odd, insert the last unpaired element
     if (container.size() % 2 != 0) {
-        int last = *--container.end();
+        int last = container.back();
         typename T::iterator pos = std::lower_bound(mainChain.begin(), mainChain.end(), last);
         if (pos == mainChain.end() || *pos != last)
             mainChain.insert(pos, last);
