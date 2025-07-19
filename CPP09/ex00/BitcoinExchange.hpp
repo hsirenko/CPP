@@ -23,6 +23,7 @@ class BitcoinExchange {
         float getExchangeRateForDate(const std::string &date) const;
 		float stringToFloat(const std::string &str) const;
 		int stringToInt(const std::string &str) const;
+		std::string formatNumber(float num) const;
 
     private:
         std::map<std::string, float> _data;

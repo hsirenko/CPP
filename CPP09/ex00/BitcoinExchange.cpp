@@ -55,6 +55,22 @@ bool BitcoinExchange::isValidCalendarDate(const std::string &date)
 	return true;
 }
 
+std::string BitcoinExchange::formatNumber(float num) const {
+    std::ostringstream oss;
+    oss << std::fixed << std::setprecision(2) << num;
+    std::string s = oss.str();
+    // Remove trailing zeros after decimal point
+    if (s.find('.') != std::string::npos) {
+        // Remove trailing zeros
+        while (s.size() > 1 && s[s.size() - 1] == '0')
+            s.erase(s.size() - 1);
+        // Remove decimal point if it's the last character
+        if (s[s.size() - 1] == '.')
+            s.erase(s.size() - 1);
+    }
+    return s;
+}
+
 void BitcoinExchange::readFile(const std::string &filename)
 {
     std::ifstream file(filename.c_str());
@@ -110,19 +126,24 @@ void BitcoinExchange::readFile(const std::string &filename)
 		}
 		if (!isValidCalendarDate(date))
 		{
-			std::cerr << "Error: invalid date: " << _date << std::endl;
+			std::cerr << "Error: bad input => " << _date << std::endl;
 			continue;
 		}
-		if (!_currentPrice || _currentPrice < 0 || _currentPrice > 1000)
+		if (_currentPrice > 1000)
 		{
-			std::cerr << "Error: value is out of range: " << _currentPrice << std::endl;
+			std::cerr << "Error: too large number." << std::endl;
+			continue;
+		}
+		if (_currentPrice < 0)
+		{
+			std::cerr << "Error: not a positive number."  << std::endl;
 			continue;
 		}
 		try {
 			float rate = getExchangeRateForDate(date);
 			float result = rate * _currentPrice;
-			std::cout << std::setprecision(2); // set precision for all following floats
-			std::cout << date << " => " << _currentPrice << " = " << result << std::endl;
+			std::cout << std::fixed << std::setprecision(2); // set precision for all following floats
+			std::cout << date << " => " << formatNumber(_currentPrice) << " = " << formatNumber(result) << std::endl;
 		} catch (const std::exception &e) {
 			std::cerr << "Error: " << e.what() << std::endl;
 		}
